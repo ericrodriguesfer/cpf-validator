@@ -1,0 +1,38 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 550px !important;
+    margin-top: 18%;
+}
+
+.btn-validation {
+    width: 100% !important;
+    margin-top: 15px;
+}
+
+.btn-erro {
+    width: 100% !important;
+    margin-top: 15px;
+}
+
+.text-muted {
+    float: left !important;
+    font-weight: 600;
+    margin-left: 5px !important;
+}
+
+.alert {
+    width: 525px !important;
+}
+
+.body-error{
+    margin-top: 20% !important;
+}
+
+.information {
+    margin-top: -10px !important;
+}

@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col">
+            <center><h2>DIGITE O CPF PARA VALIDAÇÃO</h2></center><br>
+            <center>
+                <form action="/validation" method="POST" class="form-search">
+                    <div class="form-outline">
+                        <input type="text" id="cpf_validation" name="cpf_validation" class="form-control" aria-describedby="cpf-help" minlength="14" maxlength="14" required/>
+                        <label class="form-label" for="cpf_validation" >Digite o CPF que deseja validar</label>
+                    </div>
+                    <small id="cpf-help" class="form-text text-muted">Digite o CPF no seguinte formato: <b>XXX.XXX.XXX-XX</b></small>
+                    <button type="submit" class="btn btn-primary btn-validation">Validar</button>
+                </form>
+                <br>
+                
+            </center>
+        </div>
+    </div>
+</div>
