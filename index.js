@@ -81,5 +81,5 @@ app.post("/validation", (require, response) => {
 });
 
 app.listen(PORT, () => {
-    console.log('Aplication was started in port 3333...');
+    console.log('Aplication was started in port 3000...');
 });
