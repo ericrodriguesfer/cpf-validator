@@ -4,29 +4,29 @@ var cpfVerifyDigits = require("./functions/cpfVerifyDigits");
 var cpfVerifyFirstDigit = require("./functions/cpfVerifyFirstDigit");
 var cpfVerifySecondDigit = require("./functions/cpfVerifySecondDigit");
 
-function Validator (cpfParams) {
+async function Validator (cpfParams) {
     var cpf = cpfParams;
     var containerCpfGeneric = ["00000000000", "11111111111", "22222222222", "33333333333", "44444444444", "55555555555", "66666666666", "77777777777", "88888888888", "99999999999"];
     var cpfGeneric = false;
     var error = false;
     var validation = false;
 
-    var cpfClean = clearCpf(cpf);
+    var cpfClean = await clearCpf(cpf);
 
-    if(cpfCountDigit(cpfClean) != 11){
+    if(await cpfCountDigit(cpfClean) != 11){
         error = true;
     }
 
     cpfClean = cpf;
 
-    if(cpfVerifyDigits(cpfClean) != true){
+    if(await cpfVerifyDigits(cpfClean) != true){
         error = true;
     }
 
-    cpfClean = clearCpf(cpf);
+    cpfClean = await clearCpf(cpf);
 
-    var fisrtDigit = (cpfVerifyFirstDigit(cpfClean) * 10) % 11;
-    var secondDigit = (cpfVerifySecondDigit(cpfClean) * 10) % 11;
+    var fisrtDigit = await (cpfVerifyFirstDigit(cpfClean) * 10) % 11;
+    var secondDigit = await (cpfVerifySecondDigit(cpfClean) * 10) % 11;
 
     for(let i = 0; i < containerCpfGeneric.length; i++){
         if(cpfClean === containerCpfGeneric[i]){

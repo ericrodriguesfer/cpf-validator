@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const flash = require("connect-flash");
 
-const validator = require("./validator/validator");
+const Validator = require("./validator/validator");
 
 const app = express();
 const PORT = 3000;
@@ -56,22 +56,25 @@ app.post("/validation", (require, response) => {
     }
 
     if (count_separator === 2 && count_separator_two == 1) {
-        let validation = validator(require.body.cpf_validation);
+        Validator(require.body.cpf_validation).then((cpfCheck) => {
+            if (cpfCheck.error) {
+                require.flash("error_msg", "A estrutura do CPF informado não é válida!");
+                response.redirect("/");
+            } else {
+                if (cpfCheck.error === false && cpfCheck.validation === false) {
+                    require.flash("error_msg", "O CPF informado não é válido!");
+                    response.redirect("/");
+                }
 
-        if (validation.error) {
-            require.flash("error_msg", "A estrutura do CPF informado não é válida!");
+                if (cpfCheck.error === false && cpfCheck.validation === true) {
+                    require.flash("success_msg", "O CPF informado é válido!");
+                    response.redirect("/");
+                }
+            }
+        }).catch((erro) => {
+            require.flash("error_msg", "O CPF informado não é válido!");
             response.redirect("/");
-        } else {
-            if (validation.error === false && validation.validation === false) {
-                require.flash("error_msg", "O CPF informado não é válido!");
-                response.redirect("/");
-            }
-        
-            if (validation.error === false && validation.validation === true) {
-                require.flash("success_msg", "O CPF informado é válido!");
-                response.redirect("/");
-            }
-        }
+        });
     } else {
         response.redirect("/erro");
     }
