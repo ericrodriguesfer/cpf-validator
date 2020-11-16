@@ -6,7 +6,7 @@ Está é a implementação de uma simples aplicação web, esta aplicação surg
 
     ./validator (É o diretório que guarda todo o core de funcionamento da validação)
 
-    ./validator/validator..js (É o arquivo principal da execução da válidação, onde ele executa algumas funções e faz a requisição a outras funções)
+    ./validator/validator.js (É o arquivo principal da execução da válidação, onde ele executa algumas funções e faz a requisição a outras funções)
 
     ./validator/functions (É o sub diretório que guarda todas as funções que são executadas para realizar a válidação de um CPF, são essas funções que o arquivo validator.js citado a cima faz suas requisições)
 
